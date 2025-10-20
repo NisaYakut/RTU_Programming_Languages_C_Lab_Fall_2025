@@ -1,22 +1,21 @@
 #include <stdio.h>
 
-long long factorial(int n) {
-  long long result = 1;
-  for (int i = 1; i <= n; i++) {
-    result *= i;
-  }
-  return result;
+int sum_to_n(int n) {
+  int s = 0;
+  for (int i = 1; i <= n; i++) s += i;
+  return s;
 }
 
-int main() {
+int main(void) {
   int n;
   printf("Enter n: ");
   scanf("%d", &n);
 
-  if (n < 0) {
-    printf("Error: n must be >= 0\n");
-  } else {
-    printf("%d! = %lld\n", n, factorial(n));
+  if (n < 1) {
+    printf("Error: n must be >= 1\n");
+    return 0;
   }
+
+  printf("Sum 1..%d = %d\n", n, sum_to_n(n));
   return 0;
 }
