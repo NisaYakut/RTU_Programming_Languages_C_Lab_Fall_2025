@@ -1,30 +1,32 @@
-/*
- * week4_2_struct_student.c
- * Author: [Your Name]
- * Student ID: [Your ID]
- * Description:
- *   Demonstrates defining and using a struct in C.
- *   Students should define a 'Student' struct with fields like name, id, and grade.
- *   Then create a few instances and print them.
- */
-
 #include <stdio.h>
 #include <string.h>
 
-// TODO: Define struct Student with fields: name (char[]), id (int), grade (float)
-// Example:
-// struct Student {
-//     char name[50];
-//     int id;
-//     float grade;
-// };
+struct Student {
+  char name[50];
+  int id;
+  float grade;
+};
+
+static void print_student(const struct Student* s, int index) {
+  printf("Student %d: %s, ID: %d, Grade: %.1f\n", index, s->name, s->id,
+         s->grade);
+}
 
 int main(void) {
-    // TODO: Declare one or more Student variables
+  struct Student s1, s2;
 
-    // TODO: Assign values (either manually or via scanf)
+  strncpy(s1.name, "Alice Johnson", sizeof s1.name - 1);
+  s1.name[sizeof s1.name - 1] = '\0';
+  s1.id = 1001;
+  s1.grade = 9.1f;
 
-    // TODO: Print struct contents using printf
+  strncpy(s2.name, "Bob Smith", sizeof s2.name - 1);
+  s2.name[sizeof s2.name - 1] = '\0';
+  s2.id = 1002;
+  s2.grade = 8.7f;
 
-    return 0;
+  print_student(&s1, 1);
+  print_student(&s2, 2);
+
+  return 0;
 }
